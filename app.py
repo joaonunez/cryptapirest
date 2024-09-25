@@ -1,9 +1,13 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 # Crear una instancia de la aplicación Flask
 app = Flask(__name__)
 
-# Definir una ruta de ejemplo
+# Habilitar CORS en la aplicación
+CORS(app)
+
+# Definir un endpoint de API para saludar
 @app.route('/api/saludo', methods=['GET'])
 def saludo():
     """
@@ -13,7 +17,3 @@ def saludo():
         "saludo": "¡Hola! Bienvenido a mi API."
     }
     return jsonify(mensaje)
-
-# Verificar si se ejecuta como el archivo principal
-if __name__ == '__main__':
-    app.run(debug=True)
