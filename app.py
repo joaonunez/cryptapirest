@@ -1,13 +1,19 @@
-import os
-import sys
+from flask import Flask, jsonify
 
+# Crear una instancia de la aplicación Flask
+app = Flask(__name__)
 
-sys.path.insert(0, os.path.dirname(__file__))
+# Definir una ruta de ejemplo
+@app.route('/api/saludo', methods=['GET'])
+def saludo():
+    """
+    Un endpoint simple para saludar.
+    """
+    mensaje = {
+        "saludo": "¡Hola! Bienvenido a mi API."
+    }
+    return jsonify(mensaje)
 
-
-def app:app(environ, start_response):
-    start_response('200 OK', [('Content-Type', 'text/plain')])
-    message = 'It works!\n'
-    version = 'Python v' + sys.version.split()[0] + '\n'
-    response = '\n'.join([message, version])
-    return [response.encode()]
+# Verificar si se ejecuta como el archivo principal
+if __name__ == '__main__':
+    app.run(debug=True)
