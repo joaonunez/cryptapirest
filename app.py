@@ -9,16 +9,9 @@ app = Flask(__name__)
 CORS(app)
 
 # Definir un endpoint de API para saludar
-@app.route('/api/saludo', methods=['GET'])
-def saludo():
-    """
-    Un endpoint simple para saludar.
-    """
-    mensaje = {
-        "saludo": "¡Hola! Bienvenido a mi API."
-    }
-    return jsonify(mensaje)
+@app.route('/', methods=['GET'])
+def home():
+    return "<h1>hOLA </h1"
 
-if __name__ == '__main__':
-    # Ejecutar la aplicación en el puerto especificado
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
